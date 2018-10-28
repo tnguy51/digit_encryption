@@ -118,6 +118,14 @@ def main():
         # create password image and decode
         digits_encoded = encode_image(digits, encoder, logo, weight=weight)
 
+        # show and save decoded image vs original
+        fig, axes = plt.subplots(1, 4, figsize=(20, 5))
+        for i in range(4):
+            ax = axes.flatten()[i]
+            ax.imshow(digits[i].reshape(28, 28))
+            ax.axis('off')
+        plt.savefig('digits.png', dpi=100, bbox_inches='tight')
+
         # save password image
         imsave('digits_encoded.png', digits_encoded)
         sys.exit()
